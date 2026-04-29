@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veeva Systems × Bhanu Kumar · Proof of Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:        #09090b;
+  --bg2:       #0f0f12;
+  --bg3:       #15151a;
+  --bg4:       #1c1c22;
+  --bg5:       #22222a;
+  --border:    rgba(255,255,255,0.06);
+  --border-md: rgba(255,255,255,0.11);
+  --border-lg: rgba(255,255,255,0.2);
+  --t1:        #eeedea;
+  --t2:        #9a9895;
+  --t3:        #52504d;
+  --veeva:     #e8421a;
+  --veeva-dim: rgba(232,66,26,0.1);
+  --veeva-glow:rgba(232,66,26,0.18);
+  --veeva-t:   #f4845f;
+  --teal:      #0d9488;
+  --teal-dim:  rgba(13,148,136,0.1);
+  --teal-t:    #2dd4bf;
+  --grn:       #22c55e;
+  --grn-dim:   rgba(34,197,94,0.09);
+  --grn-t:     #4ade80;
+  --red:       #ef4444;
+  --red-dim:   rgba(239,68,68,0.09);
+  --red-t:     #f87171;
+  --amb:       #f59e0b;
+  --amb-dim:   rgba(245,158,11,0.09);
+  --amb-t:     #fbbf24;
+  --radius:    8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 62px; }
+
+body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(9,9,11,0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+}
+.nav-i {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 60px; gap: 16px;
+}
+.nav-logo {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px; letter-spacing: 0.05em;
+  color: var(--t1); white-space: nowrap; flex-shrink: 0;
+}
+.nav-logo .sep { color: var(--t3); margin: 0 8px; }
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.np {
+  font-size: 12px; font-weight: 500;
+  padding: 5px 14px; border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--t2); background: transparent;
+  text-decoration: none; transition: all 0.14s;
+  white-space: nowrap;
+}
+.np:hover { border-color: var(--border-md); color: var(--t1); }
+.np.cta { background: var(--veeva); border-color: var(--veeva); color: #fff; font-weight: 600; }
+.np.cta:hover { opacity: 0.85; }
+
+.hbg {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px; flex-shrink: 0;
+}
+.hbg span { display: block; width: 20px; height: 1.5px; background: var(--t1); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.hbg.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hbg.open span:nth-child(2) { opacity: 0; }
+.hbg.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mob-menu {
+  display: none; position: fixed; inset: 0; top: 60px;
+  background: var(--bg); z-index: 190;
+  flex-direction: column; padding: 32px 5vw;
+  border-top: 1px solid var(--border);
+}
+.mob-menu.open { display: flex; }
+.mob-menu a {
+  display: block; font-size: 20px; font-weight: 700;
+  font-family: 'Geist', sans-serif;
+  color: var(--t1); text-decoration: none;
+  padding: 18px 0; border-bottom: 1px solid var(--border);
+  letter-spacing: -0.01em;
+}
+.mob-menu a.cta-m { color: var(--veeva-t); border-bottom: none; }
+
+@media(max-width:700px){
+  .nav-links { display: none; }
+  .hbg { display: flex; }
+}
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 5vw; }
+section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+
+/* ── COVER ── */
+.cover {
+  padding: 96px 5vw 76px;
+  max-width: 1160px; margin: 0 auto;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.cover::after {
+  content: '';
+  position: absolute; top: -80px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--veeva-glow) 0%, transparent 62%);
+  pointer-events: none;
+}
+.cover::before {
+  content: '';
+  position: absolute; bottom: -80px; left: 20%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(13,148,136,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.c-kicker {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--t3); margin-bottom: 28px; display: block;
+}
+.c-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(44px, 7.5vw, 90px);
+  font-weight: 400; line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--t1); margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.c-title .ital { font-style: italic; color: var(--veeva-t); }
+.c-title .muted { color: var(--t3); }
+
+.c-sub {
+  font-size: clamp(15px, 1.7vw, 18px);
+  color: var(--t2); line-height: 1.78;
+  max-width: 580px; margin-bottom: 36px;
+  font-weight: 400; position: relative; z-index: 1;
+}
+.c-sub strong { color: var(--t1); font-weight: 600; }
+
+.c-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--veeva);
+  color: #fff; font-weight: 600;
+  font-size: clamp(12px, 1.4vw, 15px);
+  letter-spacing: 0.04em; padding: 10px 22px;
+  border-radius: 6px; margin-bottom: 52px;
+  position: relative; z-index: 1;
+}
+.c-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+.c-foot {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; padding-top: 28px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap; gap: 20px;
+}
+.c-info { font-size: 13px; color: var(--t2); line-height: 1.9; }
+.c-info strong { display: block; font-size: 15px; color: var(--t1); font-weight: 600; margin-bottom: 2px; }
+.c-toc { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+.tl {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; color: var(--t3); line-height: 2.2;
+  padding-right: 14px; border-right: 2px solid var(--veeva);
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: color 0.14s;
+}
+.tl:hover { color: var(--t2); }
+
+@media(max-width:580px){
+  .cover { padding: 64px 5vw 48px; }
+  .c-foot { flex-direction: column; align-items: flex-start; }
+  .c-toc { align-items: flex-start; }
+  .tl { padding-right: 0; padding-left: 14px; border-right: none; border-left: 2px solid var(--veeva); }
+}
+
+/* ── SECTION HEADER ── */
+.sec-ey { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+.sec-n {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--veeva-t); background: var(--veeva-dim);
+  border: 1px solid rgba(232,66,26,0.2);
+  padding: 3px 12px; border-radius: 100px;
+}
+.sec-nm {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--t3);
+}
+
+/* ── MESSAGING AUDIT ── */
+.ashell {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden;
+}
+.ahdr {
+  padding: 22px 28px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+  display: flex; align-items: flex-start;
+  justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.ahdr h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; font-weight: 400;
+  letter-spacing: -0.01em; margin-bottom: 3px;
+}
+.ahdr p { font-size: 13px; color: var(--t3); font-family: 'Geist Mono', monospace; }
+.tabrow {
+  display: flex; gap: 3px;
+  background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 8px; padding: 3px;
+}
+.tbtn {
+  font-family: 'Geist Mono', monospace; font-size: 11px;
+  padding: 6px 13px; border: none; background: transparent;
+  color: var(--t2); cursor: pointer; border-radius: 5px;
+  transition: all 0.16s; letter-spacing: 0.04em; white-space: nowrap;
+}
+.tbtn.on {
+  background: var(--bg2); color: var(--veeva-t);
+  border: 1px solid rgba(232,66,26,0.22);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.abody { padding: 26px 28px; }
+.apanel { display: none; }
+.apanel.on { display: block; }
+
+.cgrid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 14px;
+}
+@media(max-width:560px){ .cgrid { grid-template-columns: 1fr; } }
+
+.mbox { border-radius: var(--radius-lg); padding: 20px 22px; }
+.mbox.before { background: var(--red-dim); border: 1px solid rgba(239,68,68,0.14); }
+.mbox.after  { background: var(--veeva-dim); border: 1px solid rgba(232,66,26,0.14); }
+.mbox-lbl {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.mbox.before .mbox-lbl { color: var(--red-t); }
+.mbox.after  .mbox-lbl { color: var(--veeva-t); }
+.mbox p { font-size: 14px; line-height: 1.72; color: var(--t2); font-weight: 400; }
+.mbox p strong { color: var(--t1); font-weight: 600; }
+.mbox p em { font-style: italic; color: var(--t1); }
+
+.insight {
+  background: var(--bg3); border-left: 3px solid var(--veeva);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 14px 18px;
+  font-size: 14px; color: var(--t2); line-height: 1.72;
+}
+.insight strong { color: var(--t1); font-weight: 600; }
+
+/* ── GTM BRIEF ── */
+.gshell {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden;
+}
+.ghdr {
+  padding: 26px 30px 22px;
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start;
+  justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.ghdr h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; font-weight: 400;
+  letter-spacing: -0.01em; margin-bottom: 3px;
+}
+.ghdr p { font-size: 13px; color: var(--t3); font-family: 'Geist Mono', monospace; }
+.gbadge {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--grn-t); border: 1px solid rgba(34,197,94,0.22);
+  background: var(--grn-dim); border-radius: 4px;
+  padding: 5px 12px; white-space: nowrap;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.gbody { display: grid; grid-template-columns: 1fr 1fr; }
+@media(max-width:660px){ .gbody { grid-template-columns: 1fr; } }
+.gcell {
+  padding: 24px 28px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.gcell:nth-child(even) { border-right: none; }
+.gcell.full { grid-column: 1/-1; border-right: none; }
+.gcell:last-child { border-bottom: none; }
+.gcell h4 {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; color: var(--veeva-t);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 12px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.gcell p { font-size: 14px; color: var(--t2); line-height: 1.75; margin-bottom: 8px; }
+.gcell p:last-child { margin-bottom: 0; }
+.gcell p strong { color: var(--t1); font-weight: 600; }
+.gcell p em { font-style: italic; }
+
+/* Signal cards */
+.sig-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 14px; }
+@media(max-width:480px){ .sig-grid { grid-template-columns: 1fr; } }
+.sig-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px 18px;
+  transition: border-color 0.2s;
+}
+.sig-card:hover { border-color: var(--border-md); }
+.sig-icon { font-size: 18px; margin-bottom: 8px; display: block; }
+.sig-t { font-size: 13px; font-weight: 600; color: var(--t1); margin-bottom: 5px; }
+.sig-b { font-size: 13px; color: var(--t2); line-height: 1.6; }
+
+/* Timeline rows */
+.tl-rows { display: flex; flex-direction: column; margin-top: 14px; }
+.tl-row {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 16px; padding: 14px 0;
+  border-bottom: 1px solid var(--border); align-items: flex-start;
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-ph {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; color: var(--veeva-t);
+  text-transform: uppercase; letter-spacing: 0.08em; padding-top: 3px;
+}
+.tl-tx { font-size: 14px; color: var(--t2); line-height: 1.68; }
+.tl-tx strong { color: var(--t1); font-weight: 600; }
+
+/* KPI row */
+.krow { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px; }
+@media(max-width:480px){ .krow { grid-template-columns: 1fr 1fr; } }
+.kpi {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 14px 16px;
+}
+.kpi-l { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--t3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.kpi-v { font-size: 20px; font-weight: 700; color: var(--veeva); line-height: 1; margin-bottom: 5px; letter-spacing: -0.02em; font-family: 'Instrument Serif', serif; font-style: italic; }
+.kpi-d { font-size: 12px; color: var(--t3); line-height: 1.5; }
+
+/* ── PERSONA SECTION ── */
+.pintro {
+  font-size: 16px; color: var(--t2); line-height: 1.75;
+  max-width: 680px; margin-bottom: 30px;
+}
+.pintro strong { color: var(--t1); font-weight: 600; }
+
+.ptabs {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 10px; margin-bottom: 14px;
+}
+@media(max-width:540px){ .ptabs { grid-template-columns: 1fr; } }
+
+.ptab {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 20px;
+  cursor: pointer; transition: all 0.18s; user-select: none;
+}
+.ptab:hover { border-color: var(--border-md); }
+.ptab.on { border-color: var(--veeva); background: var(--veeva-dim); box-shadow: 0 0 0 1px var(--veeva); }
+.pt-icon { font-size: 22px; display: block; margin-bottom: 10px; }
+.pt-name { font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 5px; }
+.pt-desc { font-size: 13px; color: var(--t2); line-height: 1.55; }
+
+.p-prompt {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 28px 30px;
+  font-size: 14px; color: var(--t3); font-style: italic; text-align: center;
+}
+.p-output {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 28px 30px; display: none;
+}
+.p-output.on { display: block; }
+.p-otag {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--veeva-t); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;
+}
+.p-ohed {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 400; color: var(--t1); line-height: 1.2;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.p-obody { font-size: 15px; color: var(--t2); line-height: 1.78; }
+.p-obody strong { color: var(--t1); font-weight: 600; }
+
+/* ICP table */
+.icpwrap {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden; margin-top: 14px;
+}
+.icph {
+  padding: 18px 24px;
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+}
+.icph h4 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 16px; font-weight: 400;
+  color: var(--t1); margin-bottom: 3px;
+}
+.icph p { font-size: 13px; color: var(--t3); }
+.icpscroll { overflow-x: auto; }
+table.icp { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+table.icp thead th {
+  text-align: left; padding: 12px 18px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--t3);
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+}
+table.icp tbody td {
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+  color: var(--t2); vertical-align: top; line-height: 1.62;
+}
+table.icp tbody tr:last-child td { border-bottom: none; }
+table.icp tbody td:first-child { color: var(--t1); font-weight: 600; }
+table.icp tbody tr:hover td { background: var(--bg3); }
+
+/* ── COPY SAMPLES ── */
+.cipintro {
+  font-size: 16px; color: var(--t2); line-height: 1.75;
+  max-width: 680px; margin-bottom: 30px;
+}
+.cipintro strong { color: var(--t1); font-weight: 600; }
+.cex {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 12px;
+}
+.cex-top {
+  padding: 14px 22px;
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.cex-ch { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--t3); text-transform: uppercase; letter-spacing: 0.1em; }
+.cbadge {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; padding: 3px 10px;
+  border-radius: 100px; letter-spacing: 0.06em;
+}
+.cbadge.thought { background: var(--amb-dim); color: var(--amb-t); border: 1px solid rgba(245,158,11,0.2); }
+.cbadge.enablement { background: var(--veeva-dim); color: var(--veeva-t); border: 1px solid rgba(232,66,26,0.2); }
+.cbadge.customer { background: var(--teal-dim); color: var(--teal-t); border: 1px solid rgba(13,148,136,0.2); }
+.cex-body { padding: 24px 26px; }
+.ched {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(17px, 2.3vw, 22px);
+  font-weight: 400; color: var(--t1); line-height: 1.25;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.ctxt { font-size: 15px; color: var(--t2); line-height: 1.78; margin-bottom: 16px; }
+.cwhy {
+  font-size: 13px; color: var(--t3); font-style: italic;
+  line-height: 1.65; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.cwhy strong { color: var(--t2); font-style: normal; }
+
+/* ── OTHER WORK ── */
+.wgrid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px; margin-bottom: 12px;
+}
+@media(max-width:700px){ .wgrid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px){ .wgrid { grid-template-columns: 1fr; } }
+.wcard {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px;
+  text-decoration: none; display: flex; flex-direction: column;
+  transition: border-color 0.18s, transform 0.18s;
+}
+.wcard:hover { border-color: rgba(232,66,26,0.35); transform: translateY(-3px); }
+.wcard-tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; color: var(--t3);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+}
+.wcard h4 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--t1); margin-bottom: 7px; line-height: 1.25; }
+.wcard p { font-size: 13px; color: var(--t2); line-height: 1.65; flex: 1; }
+.warr { display: block; font-size: 16px; color: var(--t3); margin-top: 14px; transition: color 0.18s, transform 0.18s; }
+.wcard:hover .warr { color: var(--veeva-t); transform: translateX(4px); }
+
+/* ── SIGNATURE ── */
+.sig-section {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap;
+  gap: 20px; padding: 60px 0 80px;
+}
+.sig-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: var(--t1); margin-bottom: 10px;
+}
+.sig-name span { color: var(--veeva-t); font-style: italic; }
+.sig-det { font-size: 14px; color: var(--t2); line-height: 1.9; }
+.sig-det a { color: var(--t2); text-decoration: none; transition: color 0.14s; }
+.sig-det a:hover { color: var(--veeva-t); }
+.sig-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.sbtn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; padding: 13px 24px;
+  border-radius: 8px; text-decoration: none; transition: all 0.16s;
+}
+.sbtn.pri { background: var(--veeva); color: #fff; border: 1px solid var(--veeva); }
+.sbtn.pri:hover { opacity: 0.88; transform: translateY(-1px); }
+.sbtn.ghost { background: transparent; color: var(--t2); border: 1px solid var(--border-md); }
+.sbtn.ghost:hover { border-color: var(--veeva); color: var(--veeva-t); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE MISC ── */
+@media(max-width:580px){
+  section { padding: 56px 0; }
+  .ahdr { flex-direction: column; }
+  .tabrow { width: 100%; }
+  .tbtn { flex: 1; text-align: center; }
+  .sig-section { flex-direction: column; align-items: flex-start; padding: 48px 0 64px; }
+  .ghdr { flex-direction: column; }
+}
+@media(max-width:420px){
+  .tl-row { grid-template-columns: 72px 1fr; }
+  .krow { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── INLINE QUOTE CALLOUT ── */
+.qblock {
+  margin: 14px 0 14px;
+  padding: 16px 20px;
+  background: var(--bg3);
+  border-left: 3px solid var(--veeva);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 15px; color: var(--t1); line-height: 1.7;
+}
+
+/* ── PROGRESS INDICATOR ── */
+.reading-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--veeva);
+  z-index: 300;
+  transition: width 0.1s linear;
+  width: 0%;
+}
+</style>
+</head>
+<body>
+
+<div class="reading-bar" id="rbar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-i">
+    <div class="nav-logo">Bhanu Kumar<span class="sep">×</span>Veeva Systems</div>
+    <div class="nav-links">
+      <a href="#audit"    class="np">Audit</a>
+      <a href="#gtm"      class="np">GTM Brief</a>
+      <a href="#personas" class="np">Buyer Map</a>
+      <a href="#copy"     class="np">Copy</a>
+      <a href="#work"     class="np">Other Work</a>
+      <a href="mailto:bhanukumar0902@gmail.com" class="np cta">Say hello</a>
+    </div>
+    <button class="hbg" id="hbg" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob">
+  <a href="#audit"    onclick="closeMob()">Audit</a>
+  <a href="#gtm"      onclick="closeMob()">GTM Brief</a>
+  <a href="#personas" onclick="closeMob()">Buyer Map</a>
+  <a href="#copy"     onclick="closeMob()">Copy</a>
+  <a href="#work"     onclick="closeMob()">Other Work</a>
+  <a href="mailto:bhanukumar0902@gmail.com" class="cta-m" onclick="closeMob()">Say hello &rarr;</a>
+</div>
+
+<!-- COVER -->
+<div class="cover reveal">
+  <span class="c-kicker">Proof of Work &middot; Product Marketing Manager &middot; Veeva Systems</span>
+  <h1 class="c-title">
+    Life sciences runs<br>
+    on Veeva.<br>
+    <span class="ital">Does your team know</span><br>
+    <span class="muted">you already do?</span>
+  </h1>
+  <p class="c-sub">
+    Veeva has 35,000+ customers across pharma, biotech, and medtech. The hardest part isn't building the product anymore — it's making sure the right buyer understands why it's the only one that matters for their problem. <strong>That's the job. Here's how I'd do it.</strong>
+  </p>
+  <div class="c-pill">
+    <span class="c-pill-dot"></span>
+    THE AUDIT. THE GTM. THE THINKING.
+  </div>
+  <div class="c-foot">
+    <div class="c-info">
+      <strong>Bhanu Kumar</strong>
+      bhanukumar0902@gmail.com &nbsp;&middot;&nbsp; linkedin.com/in/bhanuexcalibur<br>
+      B2B SaaS PMM &middot; Enterprise GTM &middot; Life Sciences &middot; April 2026
+    </div>
+    <div class="c-toc">
+      <a class="tl" href="#audit">01 / Messaging Audit</a>
+      <a class="tl" href="#gtm">02 / GTM Brief</a>
+      <a class="tl" href="#personas">03 / Buyer Map</a>
+      <a class="tl" href="#copy">04 / Copy Samples</a>
+      <a class="tl" href="#work">05 / Other Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- 01 MESSAGING AUDIT -->
+<section id="audit">
+  <div class="wrap">
+    <div class="sec-ey reveal">
+      <span class="sec-n">Part 01</span>
+      <span class="sec-nm">Messaging Audit</span>
+    </div>
+    <div class="ashell reveal">
+      <div class="ahdr">
+        <div>
+          <h3>Where the current story leaves a gap</h3>
+          <p>Veeva's positioning vs. what I'd put in front of each buyer, specifically</p>
+        </div>
+        <div class="tabrow">
+          <button class="tbtn on"  onclick="swTab('cmo',this)">CMO/VP Mktg</button>
+          <button class="tbtn"     onclick="swTab('med',this)">Med Affairs</button>
+          <button class="tbtn"     onclick="swTab('it',this)">IT/CIO</button>
+        </div>
+      </div>
+      <div class="abody">
+
+        <!-- CMO/VP Mktg -->
+        <div class="apanel on" id="ap-cmo">
+          <div class="cgrid">
+            <div class="mbox before">
+              <div class="mbox-lbl">&#10005; Current framing (observed)</div>
+              <p>Veeva Commercial Cloud gives you <strong>integrated CRM, content, and analytics</strong> to drive commercial excellence across your life sciences organization.</p>
+            </div>
+            <div class="mbox after">
+              <div class="mbox-lbl">&#10003; Rewrite for the VP of Commercial</div>
+              <p><em>Your reps are in front of HCPs with content that's six weeks old and no visibility into whether any of it landed.</em> Veeva Commercial Cloud connects the content you approve to the conversation it ends up in — and tells you what actually moved the prescriber. <strong>From approval to impact, in one system.</strong></p>
+            </div>
+          </div>
+          <div class="insight">
+            <strong>The shift:</strong> Commercial leaders in pharma aren't buying "integrated CRM." They're buying a way to finally understand what's working in the field — because right now they're making million-dollar media decisions based on rep feedback and gut feel. The rewrite names the specific failure mode before it names the product. That's what makes the next sentence land.
+          </div>
+        </div>
+
+        <!-- Medical Affairs -->
+        <div class="apanel" id="ap-med">
+          <div class="cgrid">
+            <div class="mbox before">
+              <div class="mbox-lbl">&#10005; Current framing (observed)</div>
+              <p>Veeva Medical enables medical affairs teams to <strong>engage HCPs, manage evidence, and demonstrate medical value</strong> with purpose-built cloud solutions.</p>
+            </div>
+            <div class="mbox after">
+              <div class="mbox-lbl">&#10003; Rewrite for Medical Affairs</div>
+              <p>MSLs are fielding off-label questions in the field with no record of what was discussed. That's not just a compliance risk — <strong>it's a missed scientific exchange that nobody's learning from.</strong> Veeva Medical makes every interaction documentable and every insight searchable, so your medical strategy actually reflects what's happening on the ground.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <strong>The shift:</strong> Medical Affairs leaders live between two anxieties: regulatory exposure and scientific irrelevance. The current copy addresses neither directly. The rewrite leads with the compliance moment (undocumented off-label discussion) and then pivots to value — the strategic intelligence medical teams are leaving on the table every day. Name the moment, then name the fix.
+          </div>
+        </div>
+
+        <!-- IT/CIO -->
+        <div class="apanel" id="ap-it">
+          <div class="cgrid">
+            <div class="mbox before">
+              <div class="mbox-lbl">&#10005; Current framing (observed)</div>
+              <p>Veeva's true multitenant cloud platform delivers <strong>industry-specific solutions built for life sciences</strong>, with continuous innovation and lower total cost of ownership.</p>
+            </div>
+            <div class="mbox after">
+              <div class="mbox-lbl">&#10003; Rewrite for the CIO</div>
+              <p>Your last enterprise software deployment took 18 months and three consulting firms. <strong>Veeva configures in weeks, not quarters</strong>, because it's built for one industry and one industry only. No customization debt. No compatibility fires every time the business changes a process. Just a system that keeps up with the product pipeline it's supposed to support.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <strong>The shift:</strong> IT leaders in pharma have scar tissue from Salesforce customizations and SAP rollouts that never quite worked. "True multitenant cloud" is a technical spec that means nothing until you tie it to a memory they have. "18 months and three consulting firms" is that memory. Get there first, and the product story writes itself.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 GTM BRIEF -->
+<section id="gtm">
+  <div class="wrap">
+    <div class="sec-ey reveal">
+      <span class="sec-n">Part 02</span>
+      <span class="sec-nm">GTM Brief — Sample Deliverable</span>
+    </div>
+    <div class="gshell reveal">
+      <div class="ghdr">
+        <div>
+          <h3>Launching Veeva Vault MedComms in a new geography</h3>
+          <p>How I'd think through taking a mature product into a market segment it hasn't fully penetrated</p>
+        </div>
+        <div class="gbadge">Sample deliverable</div>
+      </div>
+      <div class="gbody">
+
+        <div class="gcell">
+          <h4>The opportunity</h4>
+          <p>Vault MedComms is already in use at top-20 pharma globally. But mid-size European biotech — especially those in Germany and the Nordics building out medical affairs functions for the first time — represent a large, mostly untouched segment. They have the compliance need. They don't yet have a process, which means they're not looking for a replacement. They're looking for a starting point.</p>
+          <p>That's a very different conversation to have. And a much easier one to win.</p>
+        </div>
+
+        <div class="gcell">
+          <h4>Why mid-size biotech, why now</h4>
+          <p>European biotech IPOs and Series B/C rounds hit a multi-year high in 2023–24. A significant cohort of companies have recently crossed the threshold where they need a proper medical affairs infrastructure — but haven't yet committed to a platform.</p>
+          <p><strong>The window is the year before they build it wrong themselves.</strong> Getting into the evaluation set now is the only way to be there when the budget unlocks.</p>
+        </div>
+
+        <div class="gcell full">
+          <h4>The four triggers that open a conversation</h4>
+          <div class="sig-grid">
+            <div class="sig-card">
+              <span class="sig-icon">🧬</span>
+              <div class="sig-t">First regulatory submission approaching</div>
+              <div class="sig-b">Companies within 12–18 months of their first EMA or MHRA submission are suddenly very aware of what they can and can't document. That's the moment to show up with Vault.</div>
+            </div>
+            <div class="sig-card">
+              <span class="sig-icon">👥</span>
+              <div class="sig-t">First MSL hire</div>
+              <div class="sig-b">Hiring your first Medical Science Liaison is a signal that medical affairs is becoming real. At this point, the process question is wide open. Veeva MedComms should be part of how they answer it.</div>
+            </div>
+            <div class="sig-card">
+              <span class="sig-icon">📋</span>
+              <div class="sig-t">Post-trial evidence generation phase</div>
+              <div class="sig-b">Phase III data readout creates a surge in medical content — publications, field decks, congress abstracts. If there's no system to manage it, it's chaos. That's a very specific pain we can name.</div>
+            </div>
+            <div class="sig-card">
+              <span class="sig-icon">🔀</span>
+              <div class="sig-t">Partnership or licensing deal signed</div>
+              <div class="sig-b">When a larger pharma licenses a biotech's asset, the biotech suddenly has to operate at the commercial partner's standards. Vault becomes the obvious infrastructure for that upgrade.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gcell full">
+          <h4>The message that actually opens doors at this company size</h4>
+          <div class="qblock">
+            "You don't have a legacy system to replace. You have a blank sheet of paper, and that's actually an advantage — if you use it to build something that scales with your pipeline instead of constraining it."
+          </div>
+          <p>Competitors lead with features. For a company building their medical affairs function from scratch, the right lead is permission to start correctly. Vault isn't the complicated enterprise software they're afraid of. It's the thing that means they never have to rip out a homegrown spreadsheet system in three years.</p>
+        </div>
+
+        <div class="gcell full">
+          <h4>How the launch runs</h4>
+          <div class="tl-rows">
+            <div class="tl-row">
+              <div class="tl-ph">Weeks 1–3</div>
+              <div class="tl-tx"><strong>Build the target list.</strong> Pull biotech companies in Germany, Nordics, and Benelux that: (a) have a late-stage pipeline asset, (b) have medical affairs headcount under 15, and (c) aren't already using a commercial platform. This is a discrete, findable universe. Use clinical trial registries, LinkedIn headcount signals, and press releases from trial readouts. Start with 100–150 accounts.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-ph">Weeks 4–5</div>
+              <div class="tl-tx"><strong>Build the "blank sheet" content package.</strong> One whitepaper: "What a best-in-class medical affairs infrastructure looks like for a company preparing for its first launch." No product pitch. Pure education. This becomes the SDR's opening value exchange — not a cold demo request, a useful thing they can share with the medical affairs lead.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-ph">Weeks 6–8</div>
+              <div class="tl-tx"><strong>Activate through clinical networks, not just outbound.</strong> Sponsor or partner with a medical affairs community event (Medical Affairs Professional Society Europe is the obvious one). The audience there is exactly this profile. Put Veeva subject matter experts in front of them, not sales people. The credibility is in the clinical depth, not the pitch.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-ph">Week 8+</div>
+              <div class="tl-tx"><strong>Measure what matters.</strong> Not just pipeline generated. Track content downloads from target accounts, event conversation quality from the MSA activation, and time-to-second-meeting. The first metric tells us if the message is landing. The second tells us if we're getting the right people in the room. The third tells us if we're wasting sales team time on misqualified accounts.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gcell full" style="border-bottom:none;">
+          <h4>How we know it's working</h4>
+          <div class="krow">
+            <div class="kpi">
+              <div class="kpi-l">Primary</div>
+              <div class="kpi-v">ICP→Pipeline</div>
+              <div class="kpi-d">% of target-list accounts that progress to a qualified discovery conversation within 60 days</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-l">Secondary</div>
+              <div class="kpi-v">Content Reach</div>
+              <div class="kpi-d">Whitepaper downloads from target accounts (not total downloads — that's the wrong number)</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-l">Leading signal</div>
+              <div class="kpi-v">Event Quality</div>
+              <div class="kpi-d">Number of follow-up conversations booked from the MAPS Europe activation vs. prior event benchmarks</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BUYER PERSONA MAP -->
+<section id="personas">
+  <div class="wrap">
+    <div class="sec-ey reveal">
+      <span class="sec-n">Part 03</span>
+      <span class="sec-nm">Buyer Persona Map</span>
+    </div>
+    <p class="pintro reveal">
+      Veeva has at least three meaningfully different buyers in any single deal — and they're rarely in the same room at the same time. The VP of Commercial is worried about field execution. Medical Affairs is worried about compliance and scientific credibility. IT is worried about not cleaning up someone else's mess in two years. <strong>Same product, three completely different conversations to win.</strong> Click one.
+    </p>
+
+    <div class="ptabs reveal">
+      <div class="ptab" onclick="swPersona('commercial', this)">
+        <span class="pt-icon">📊</span>
+        <div class="pt-name">VP of Commercial</div>
+        <div class="pt-desc">Accountable for the launch P&L. Wants to know the field is operating from the right content, hitting the right HCPs, and that someone can explain the numbers when things don't go to plan.</div>
+      </div>
+      <div class="ptab" onclick="swPersona('medical', this)">
+        <span class="pt-icon">🧪</span>
+        <div class="pt-name">VP of Medical Affairs</div>
+        <div class="pt-desc">Sitting between the clinical and commercial worlds. Needs a system that keeps them compliant, supports evidence generation, and doesn't require a PhD in IT to use.</div>
+      </div>
+      <div class="ptab" onclick="swPersona('cio', this)">
+        <span class="pt-icon">🏗️</span>
+        <div class="pt-name">CIO / Head of IT</div>
+        <div class="pt-desc">Has been handed a life sciences technology roadmap they didn't design and is trying to consolidate systems without triggering a 24-month implementation project.</div>
+      </div>
+    </div>
+
+    <div class="p-prompt reveal" id="p-prompt">Pick a buyer above to see how the conversation changes</div>
+    <div class="p-output reveal" id="p-output">
+      <div class="p-otag"  id="p-tag"></div>
+      <div class="p-ohed"  id="p-hed"></div>
+      <div class="p-obody" id="p-body"></div>
+    </div>
+
+    <div class="icpwrap reveal" style="margin-top:18px;">
+      <div class="icph">
+        <h4>Same deal, different person, different reason to say yes.</h4>
+        <p>Understanding which version of the problem they're living changes the whole conversation.</p>
+      </div>
+      <div class="icpscroll">
+        <table class="icp">
+          <thead>
+            <tr>
+              <th>Buyer</th>
+              <th>How the pain shows up</th>
+              <th>What actually opens the door</th>
+              <th>Where to find them</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VP of Commercial</td>
+              <td>Reps are using stale materials. HCP targeting is based on old data. Nobody can tell you what drove last quarter's uplift in a specific market.</td>
+              <td>Show the feedback loop: content approved → field delivered → HCP response → commercial insight. Make the invisible chain visible.</td>
+              <td>PMEC, eyeforpharma, Veeva commercial summit — anywhere commercial operations and marketing converge</td>
+            </tr>
+            <tr>
+              <td>VP of Medical Affairs</td>
+              <td>MSLs are doing undocumented exchanges. Medical content lives in email threads. Compliance asks for a record that doesn't exist yet.</td>
+              <td>Lead with the compliance exposure, not the efficiency. Medical affairs leaders respond to liability before they respond to productivity.</td>
+              <td>Medical Affairs Professional Society (MAPS), ISMPP, eyeforpharma medical track</td>
+            </tr>
+            <tr>
+              <td>CIO / Head of IT</td>
+              <td>Five systems doing what one should. A Salesforce instance that nobody will touch because of the custom code. Twelve months of backlog every time the business wants a new field in a report.</td>
+              <td>Frame it as debt reduction, not technology addition. The fastest way in is to calculate the cost of the current workarounds they're already living with.</td>
+              <td>Bio-IT World, internal referral from Commercial or Medical champion, Veeva technology partner network</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 COPY SAMPLES -->
+<section id="copy">
+  <div class="wrap">
+    <div class="sec-ey reveal">
+      <span class="sec-n">Part 04</span>
+      <span class="sec-nm">Copy Samples</span>
+    </div>
+    <p class="cipintro reveal">
+      Three different moments in the buying cycle, three different people, three different levels of familiarity with what Veeva actually does. None of these are written for a persona document. <strong>They're written for the specific moment of anxiety the buyer is in when they encounter them.</strong>
+    </p>
+
+    <div class="cex reveal">
+      <div class="cex-top">
+        <span class="cex-ch">Thought leadership article — for VP of Medical Affairs at mid-size biotech</span>
+        <span class="cbadge thought">Thought Leadership</span>
+      </div>
+      <div class="cex-body">
+        <div class="ched">Your MSLs are having the most important scientific conversations in your company. None of them are on record.</div>
+        <div class="ctxt">
+          Ask any VP of Medical Affairs how their MSL team is performing and you'll get a version of the same answer: "They're having great conversations. HCPs love them. We're seeing good engagement." 
+          <br><br>
+          Then ask what was discussed in those conversations, which data drove the most follow-up questions, and what's showing up repeatedly across geographies — and the answer changes. Usually to: "We get a call summary. Sometimes."
+          <br><br>
+          This isn't a people problem. It's a systems problem. MSLs are doing exactly what they're supposed to do: building scientific relationships in real time, often without wifi, in between back-to-back HCP meetings. Asking them to be the documentation system on top of that is where the institutional knowledge gets lost.
+          <br><br>
+          The companies that figure this out first aren't doing anything dramatic. They're just capturing what's already happening — systematically, compliantly, in a way that feeds back into the medical strategy instead of disappearing into a shared folder somewhere.
+        </div>
+        <div class="cwhy"><strong>Why it works:</strong> Opens with a recognition moment — the VP will nod along to the first three sentences because they've had that exact conversation. Then lands the reframe: this isn't a performance issue, it's an infrastructure issue. That moves the solution from "fix your people" to "give them the right system," which is the conversation Veeva wants to be having.</div>
+      </div>
+    </div>
+
+    <div class="cex reveal">
+      <div class="cex-top">
+        <span class="cex-ch">Sales enablement talk track — for SDR opening on IT/CIO cold outreach</span>
+        <span class="cbadge enablement">Sales Enablement</span>
+      </div>
+      <div class="cex-body">
+        <div class="ched">"What would it cost your team if we told you that the commercial platform you're running right now isn't going to be fit for purpose in 18 months?"</div>
+        <div class="ctxt">
+          That's not the opener. That's where you want to get in the first five minutes. Here's how to get there:
+          <br><br>
+          <strong>The actual opener:</strong> "I know your team is usually stuck cleaning up what the business decided on a system, rather than being part of the decision. I wanted to have a different kind of conversation — what does your current life sciences tech stack actually cost you to maintain, not in licensing, but in IT hours?"
+          <br><br>
+          Let them answer. They will. CIOs in pharma have a number in their head and nobody ever asks for it.
+          <br><br>
+          From there, every door is open:
+          <br>&rarr; "Our customization debt is significant" → Veeva's no-customization architecture<br>
+          &rarr; "Upgrades are a nightmare" → continuous delivery without upgrade projects<br>
+          &rarr; "We have seven systems doing what should be three" → Vault consolidation story<br>
+          &rarr; "The business keeps changing the requirements" → configurability without code<br><br>
+          The goal of this call isn't a demo. It's getting the CIO to say "I've never thought about it that way" out loud. That's the moment they become a champion instead of a blocker.
+        </div>
+        <div class="cwhy"><strong>Why it works:</strong> CIOs are almost always positioned as the budget gatekeeper in enterprise SaaS sales. This reframes them as a strategic partner with their own pain — which they have, and nobody's acknowledging. The question about IT hours rather than licensing cost catches them off guard in a useful way. It shows you understand their world, not just the product you're selling.</div>
+      </div>
+    </div>
+
+    <div class="cex reveal">
+      <div class="cex-top">
+        <span class="cex-ch">Customer story framework — turning a win into a replicable narrative</span>
+        <span class="cbadge customer">Customer Marketing</span>
+      </div>
+      <div class="cex-body">
+        <div class="ched">The customer story that actually moves the next deal isn't about features. It's about the moment the team realized the old way wasn't working anymore.</div>
+        <div class="ctxt">
+          Most life sciences case studies follow the same arc: company had a problem, company implemented Veeva, numbers improved. By paragraph two, the reader already knows where it's going.
+          <br><br>
+          The stories that actually get referenced in sales conversations — the ones that get forwarded between peers before a buying decision — start somewhere different. They start with a specific, recognizable failure moment.
+          <br><br>
+          A good Veeva customer story framework:
+          <br><br>
+          <strong>01 / The moment:</strong> What specific event made the old way undeniable? (A regulatory audit that revealed undocumented MSL exchanges. A product launch where nobody could pull together which HCPs had been reached with which message. A compliance hold that delayed a campaign by six weeks.)
+          <br><br>
+          <strong>02 / The decision:</strong> What made them choose to act now rather than later, and why Veeva? (Not "the platform's industry specificity" — that's marketing language. The real reason, in their words.)
+          <br><br>
+          <strong>03 / The change:</strong> What's different in the way the team actually works? Not just the numbers — the day-to-day experience of doing the job.
+          <br><br>
+          <strong>04 / What they'd tell a peer:</strong> This is the quote that gets forwarded. "Before Veeva, I was explaining to the board why I couldn't tell them which markets were performing. Now I can show them in 20 minutes." That's the story.
+        </div>
+        <div class="cwhy"><strong>Why it works:</strong> The JD specifically calls out proactively finding customer success stories and making them usable for the field. This framework is what I'd use to brief the customer interviews. It's designed to extract the moment and the quote, not just the metrics — because moments and quotes are what live in the back of a buyer's mind when they're deciding.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 05 OTHER WORK -->
+<section id="work" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-ey reveal">
+      <span class="sec-n">Part 05</span>
+      <span class="sec-nm">Other Relevant Work</span>
+    </div>
+    <div class="wgrid reveal">
+      <a href="https://bhanuexcalibur.github.io/Boundless-PoW/" class="wcard" target="_blank" rel="noopener">
+        <div class="wcard-tag">Compliance infra / Multi-buyer messaging</div>
+        <h4>Boundless &ndash; Proof of Work</h4>
+        <p>Three-buyer messaging rewrite for a compliance infrastructure product — Risk Officer, CTO, and Exchange/Partner BD. Same challenge as Veeva: one product, multiple buyers, each with a completely different reason to care. The audit section maps closely to how I'd approach Veeva's Commercial vs. Medical vs. IT buyer split.</p>
+        <span class="warr">&rarr;</span>
+      </a>
+      <a href="https://bhanuexcalibur.github.io/RelayFi_PoW/" class="wcard" target="_blank" rel="noopener">
+        <div class="wcard-tag">B2B SaaS / GTM brief + cross-sell motion</div>
+        <h4>Relay Financial &ndash; Proof of Work</h4>
+        <p>Full GTM brief for a product feature launch — including target account identification, launch sequencing, and success metrics. The playbook structure maps directly to what Veeva's PMM team would deliver for a new product or geography expansion.</p>
+        <span class="warr">&rarr;</span>
+      </a>
+      <a href="https://bhanuexcalibur.github.io/RevPoints_Audit/" class="wcard" target="_blank" rel="noopener">
+        <div class="wcard-tag">Growth audit / Customer activation</div>
+        <h4>Revolut RevPoints &ndash; Growth Audit</h4>
+        <p>Independent audit of RevPoints' 53M dormant user gap — with an interactive activation calculator, competitive analysis, and a 30-60-90 plan. Shows how I structure a data-backed strategic recommendation from scratch, without internal data access.</p>
+        <span class="warr">&rarr;</span>
+      </a>
+      <a href="https://bhanuexcalibur.github.io/Altitude_LandingPage/" class="wcard" target="_blank" rel="noopener">
+        <div class="wcard-tag">Complex product / Non-technical buyers</div>
+        <h4>Altitude &ndash; Stablecoin Business Account</h4>
+        <p>Repositioned landing page for a technically complex fintech product targeting founders who didn't grow up in finance. The core challenge — making dense infrastructure legible and urgent to a skeptical buyer — is the same one Veeva's PMM team faces every day with enterprise life sciences buyers.</p>
+        <span class="warr">&rarr;</span>
+      </a>
+      <a href="https://bhanuexcalibur.github.io/Revolut-Used-Gone-Campaign/" class="wcard" target="_blank" rel="noopener">
+        <div class="wcard-tag">Campaign strategy / Creative execution</div>
+        <h4>Revolut &ndash; Already Gone Campaign</h4>
+        <p>Full creative platform for Revolut's Virtual Single-Use Cards — from positioning and art direction through to in-product copy and an OOH breach-reactive activation. Shows how I think from insight through execution when the product is technical but the anxiety is human.</p>
+        <span class="warr">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<div class="wrap">
+  <div class="sig-section reveal">
+    <div>
+      <div class="sig-name">Bhanu <span>Kumar</span></div>
+      <div class="sig-det">
+        <a href="mailto:bhanukumar0902@gmail.com">bhanukumar0902@gmail.com</a><br>
+        <a href="https://linkedin.com/in/bhanuexcalibur" target="_blank" rel="noopener">linkedin.com/in/bhanuexcalibur</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="https://x.com/excaliburbhanu" target="_blank" rel="noopener">@excaliburbhanu</a>
+      </div>
+    </div>
+    <div class="sig-btns">
+      <a class="sbtn pri" href="mailto:bhanukumar0902@gmail.com">
+        Get in touch
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7.5 3.5l3 3-3 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sbtn ghost" href="https://drive.google.com/file/d/1R8y-dAaemHKw5tqmSW1fsLTwIGtISVWw/view" target="_blank" rel="noopener">Full resume &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Mobile menu */
+function toggleMob(){
+  document.getElementById('mob').classList.toggle('open');
+  document.getElementById('hbg').classList.toggle('open');
+}
+function closeMob(){
+  document.getElementById('mob').classList.remove('open');
+  document.getElementById('hbg').classList.remove('open');
+}
+
+/* Audit tabs */
+function swTab(id, btn){
+  document.querySelectorAll('.apanel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.tbtn').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('ap-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+/* Persona switcher */
+var personas = {
+  commercial: {
+    tag:  'Message for: VP of Commercial',
+    hed:  'The field is doing the work. You just can\'t see it — and neither can your data.',
+    body: 'Commercial leaders in pharma are making brand investment decisions based on a combination of IMS data, rep call logs, and optimism. The feedback loop between what gets approved in medical-legal-regulatory, what ends up in the field, and what actually influences an HCP is broken at multiple points. <strong>Veeva Commercial Cloud isn\'t a CRM replacement.</strong> It\'s the first system that closes that loop without requiring your team to reconcile four different data sources every time someone asks how the brand is performing in a specific territory.'
+  },
+  medical: {
+    tag:  'Message for: VP of Medical Affairs',
+    hed:  'Compliant doesn\'t mean documented. And documented doesn\'t mean useful.',
+    body: 'Most medical affairs teams have compliance processes. What they don\'t have is a system that turns those processes into strategic intelligence. MSL call summaries exist somewhere — in email, in a shared drive, in a template that nobody filled in properly because they were in back-to-back HCP meetings all day. <strong>Veeva Medical makes that capture part of the workflow, not a second job on top of it.</strong> So when your CSO asks what the field is hearing about your Phase III data, you have an actual answer — not a collation exercise that takes three days.'
+  },
+  cio: {
+    tag:  'Message for: CIO / Head of IT',
+    hed:  'You didn\'t design the stack you\'re maintaining. Veeva is how you stop inheriting someone else\'s decisions.',
+    body: 'The IT leader in a life sciences company is usually handed a Salesforce instance with years of customization debt, a handful of point solutions that were procured by individual business units, and a mandate to "consolidate." The reason consolidation never happens is that every system has a champion who will fight to keep it. <strong>Veeva Vault changes that calculation</strong> because it covers the full commercial and medical workflow in a single platform — which means there\'s no longer a reason to keep the workarounds. You\'re not adding another system. You\'re removing the reason the other systems exist.'
+  }
+};
+
+function swPersona(type, card){
+  document.querySelectorAll('.ptab').forEach(function(c){ c.classList.remove('on'); });
+  card.classList.add('on');
+  var d = personas[type];
+  document.getElementById('p-tag').textContent = d.tag;
+  document.getElementById('p-hed').textContent = d.hed;
+  document.getElementById('p-body').innerHTML  = d.body;
+  document.getElementById('p-prompt').style.display = 'none';
+  var out = document.getElementById('p-output');
+  out.classList.add('on');
+  out.style.opacity = '0';
+  out.style.transform = 'translateY(8px)';
+  out.style.transition = 'opacity 0.26s ease, transform 0.26s ease';
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      out.style.opacity = '1';
+      out.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+/* Reading progress bar */
+window.addEventListener('scroll', function(){
+  var doc = document.documentElement;
+  var scrolled = doc.scrollTop || document.body.scrollTop;
+  var total = doc.scrollHeight - doc.clientHeight;
+  var pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('rbar').style.width = pct + '%';
+});
+
+/* Scroll reveal */
+var revEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  },{ threshold: 0.05, rootMargin: '0px 0px -12px 0px' });
+  revEls.forEach(function(el){ obs.observe(el); });
+} else {
+  revEls.forEach(function(el){ el.classList.add('in'); });
+}
+window.addEventListener('load', function(){
+  revEls.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < window.innerHeight){ el.classList.add('in'); }
+  });
+});
+</script>
+</body>
+</html>
